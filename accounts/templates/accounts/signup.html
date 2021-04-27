@@ -1,0 +1,32 @@
+{% extends 'articles/dashboard.html' %}
+
+{% block content%}
+<br>
+<br>
+<div class='container p-3'>
+<div class='container'>
+<div class='row'>
+<div class='col'>
+<h2 class='text-center'>REGISTER</h2>
+<br>
+<br>
+<br>
+<form class='site-form' action='/accounts/signup/' method='post'>
+{% csrf_token %}
+<div class='container'>
+{{form.as_p | linebreaks }}
+<br>
+<input type='submit' name='' value='signup' class='bg-dark text-white'>
+</form>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}

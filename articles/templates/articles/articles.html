@@ -1,0 +1,39 @@
+{% extends 'articles/dashboard.html' %}
+{% load static %}
+
+{% block content %}
+<div class='container-fluid'>
+<img src="{% static 'images/image6.jpg' %}" height='600' width='1400'>
+
+</div>
+<br>
+<br>
+<div class='container-fluid'>
+<div class='container'>
+ <h2 class='text-center text-uppercase'>Posts</h2>
+<br>
+<div class='row'>
+{% for article in articles %}
+<div class='col-md-6 pb-3'>
+<div class="card" style="width:470px">
+<!--<img class="card-img-top" src="img_avatar1.png" alt="Card image">-->
+<div class="card-body">
+<h3 class="card-title text-center"> <a href="{% url 'articles:detail' slug=article.slug %}" class='text-dark'>{{article.title}}</a></h3>
+<p class="card-text text-center">{{article.snippet}}
+<br>
+{{article.date}}
+</p>
+<p class='text-center'>
+<a href="{% url 'articles:detail' slug=article.slug %}" class="btn btn-dark">Read More</a>
+</p>
+</div>
+</div>
+</div>
+{% endfor %}
+</div>
+</div>
+</div>
+<!--</div>-->
+<br>
+<br>
+{% endblock %}

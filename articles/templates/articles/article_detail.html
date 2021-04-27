@@ -1,0 +1,71 @@
+{% extends 'articles/dashboard.html' %}
+
+{% block content %}
+       <!--<a class='text-center pt-3' href="{% url 'articles:list'%}">Article List</a>-->
+       <br>
+<div class='container-fluid'>
+<div class='container'>
+<div class='container'>
+<div class='jumbotron'>
+<h2 class='text-center text-dark text-uppercase'>{{post.title}}</h2>
+<div class='row'>
+<div class='col text-center pt-3'>
+<p>{{post.body}}</p>
+<p>{{post.date}}</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class='container'>
+<h2 class='text-center text-dark'>{{article.title}}</h2>
+
+
+
+
+<div class='container'>
+<div class='jumbotron'>
+{% if new_comment %}
+<div class='container'>
+<p class='bg-danger text-white text-uppercase text-center'>You Posted</p>
+{% else %}
+<h3>Leave a comment</h3>
+<form method='post'>
+{{ comment_form.as_p}}
+{% csrf_token %}
+<button type='submit'>Submit</button>
+</form>
+{% endif %}
+</div>
+</div>
+</div>
+</div>
+
+
+<h2>{{ post.comments.count }}  Comments</h2>
+{% for comment in comments %}
+<ul class="list-group p-2">
+<div class='row'>
+<div class='col'>
+  <li class="list-group-item pt-3">
+  {{ comment.created_on}}
+  <br>
+   Name : <span class='text-uppercase'>{{ comment.name }}</span>
+  <br>
+  Commented: {{ comment.body}}
+  <br>
+  {{ article.author }} </li>
+  </div>
+  <div>
+  </div>
+  <div class="col"></div>
+<div class="col"></div>
+
+  </div>
+</ul>
+
+{% endfor %}
+{% endblock %}

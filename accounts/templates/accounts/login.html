@@ -1,0 +1,45 @@
+{% extends 'articles/dashboard.html' %}
+{% load static %}
+
+{% block content%}
+<br>
+<br>
+<br>
+<div class='container p-3'>
+<br>
+<div class='row'>
+<div class='col p-3'>
+<img src="{% static 'images/image3.jpg' %}" height='500' width='650'>
+
+</div>
+<div class='col'>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class='container'>
+<div class='container'>
+<form class='site-form text-center' action='{% url 'accounts:login' %}' method='post'>
+{% csrf_token%}
+<h5 class=''>{{form.as_p}}</h5>
+{% if request.GET.next %}
+<input type='hidden' name='next' value='{{request.GET.next}}'>
+{% endif %}
+<input type='submit' name='' value='Log in' class='bg-dark text-white ml-3'>
+<span class='text-center pl-1'><a href="{% url  'accounts:signup' %}" class='pr-2 text-dark'>Dont have an account? Register.</a></span>
+</form>
+</div>
+</div>
+</div>
+</div>
+<br>
+<br>
+<br>
+</div>
+</div>
+
+
+
+{% endblock %}
